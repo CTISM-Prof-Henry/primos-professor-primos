@@ -3,11 +3,32 @@
 #define N_PRIMES 10
 
 bool is_prime(int number) {
-    return (bool)NULL;
+    // tem que percorrer de 2 até n/2
+    // tem que percorrer 2 até number/2, e descartar a parte fracionária de n/2
+    int comeco = 2;
+    int fim = number / 2;
+    for(int i = comeco; i <= fim; i++) {
+        // se o resto da divisão inteira de number por i for zero
+        if((number % i) == 0) {
+            return false;  // não, não é primo; retorna false
+        }
+    }
+    // se ele chegar nessa instrução, quer dizer que o laço não foi interrompido;
+    // logo, é primo
+    return true;
 }
 
 int twins_between_values(int a, int b) {
-    return (int)NULL;
+    int contador = 0;  // armazena quantos números primos estão entre a e b
+    // percorre todos os números entre a e b
+    for(int i = a; i <= b - 2; i++) {
+        // tem que chegar se o número atual é primo, e se o número atual + 2 também é primo;
+        // se sim, adiciona +1 no contador de números primos no intervalo
+        if(is_prime(i) && is_prime(i + 2)) {
+            contador = contador + 1;
+        }
+    }
+    return contador;
 }
 
 /**
